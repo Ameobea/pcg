@@ -1,4 +1,5 @@
 use rand::{Rng, SeedableRng, Rand};
+use serde::{Serialize, Deserialize};
 
 /// A [PCG](http://www.pcg-random.org)-based random number generator.
 ///
@@ -9,7 +10,7 @@ use rand::{Rng, SeedableRng, Rand};
 ///
 /// This particular implementation uses a 128-bit state value, has a period of 2^64, and uses the
 /// `XSH-RR` output function.
-#[derive(Copy, Debug, Clone, RustcEncodable, RustcDecodable)]
+#[derive(Copy, Debug, Clone, RustcEncodable, RustcDecodable, Serialize, Deserialize)]
 pub struct PcgRng {
     state: u64,
     inc: u64,
